@@ -1,13 +1,54 @@
+import 'package:app_iti/sample_data.dart';
 import 'package:flutter/material.dart';
 
 class SomeWidgets extends StatelessWidget {
-  const SomeWidgets({super.key});
+  SomeWidgets({super.key});
+
+  // final List<String> tasks = ["Go to Gym", "Go to College", "Go to Office"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Some Widgets")),
-      body: GridView.count(
+      body: Center(
+        child: Image.asset("assets/images/flower-4ms.png"),
+      )
+    );
+  }
+}
+
+
+/*
+GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        itemCount: imageUrls.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Image.network(imageUrls[index]),
+          );
+        },
+      ),
+ */
+
+/*
+ListView.builder(
+        itemCount: tasks.length,
+        itemBuilder: (context, index) {
+          return ListTile(            
+            title: Text(tasks[index].title),
+            subtitle: Text(tasks[index].subtitle),
+          );
+        },
+      ),
+ */
+
+
+
+/*
+GridView.count(
         crossAxisCount: 3,
 
         children: [
@@ -92,10 +133,10 @@ class SomeWidgets extends StatelessWidget {
             ),
           ),
         ],
+      
+      
       ),
-    );
-  }
-}
+ */
 
 
 /*
