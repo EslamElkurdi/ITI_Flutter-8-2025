@@ -27,27 +27,29 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       lastDate: DateTime.now(),
     );
 
-    if(picked != null){
+    if (picked != null) {
       setState(() => _dob = picked);
     }
   }
 
-  void _submit(){
-    if(_formKey.currentState!.validate()){
-      if(_dob == null){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please select date of birth")));
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      if (_dob == null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Please select date of birth")));
 
         return;
       }
 
       _formKey.currentState!.save();
       widget.addStudent({
-        'name' : _name,
-        'email' : _emai,
-        'gender' : _gender,
-        'active' : _active,
-        'notifications' : _notifications,
-        'dob' : "${_dob!.day}/${_dob!.month}/${_dob!.year}"
+        'name': _name,
+        'email': _emai,
+        'gender': _gender,
+        'active': _active,
+        'notifications': _notifications,
+        'dob': "${_dob!.day}/${_dob!.month}/${_dob!.year}",
       });
 
       _formKey.currentState!.reset();
@@ -64,6 +66,75 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
   @override
   Widget build(BuildContext context) {
     // UI
-    return ;
+    return Padding(
+      padding: EdgeInsets.all(16),
+      child: Form(
+        key: _formKey,
+        child: ListView(
+          children: [
+            TextFormField(
+              decoration: InputDecoration(labelText: "Name"),
+              validator: (value) => value!.isEmpty ? 'Enter name' : null,
+              onSaved: (newValue) => _name = newValue!,
+            ),
+
+            TextFormField(
+              decoration: InputDecoration(labelText: "Email"),
+              validator: (value) => value!.isEmpty ? 'Enter Email' : null,
+              onSaved: (newValue) => _emai = newValue!,
+            ),
+
+            SizedBox(height: 10),
+
+            Text("Gender"),
+
+            Row(
+              children: [
+                Radio<String>(
+                  value: "Male",
+                  groupValue: _gender,
+                  onChanged: (value) => setState(() => _gender = value!),
+                ),
+                Text("Male"),
+                Radio<String>(
+                  value: "Female",
+                  groupValue: _gender,
+                  onChanged: (value) => setState(() => _gender = value!),
+                ),
+                Text("Female"),
+              ],
+            ),
+
+            CheckboxListTile(
+              title: Text("Active"),
+              value: _active,
+              onChanged: (value) => setState(() => _active = value!),
+            ),
+
+            SwitchListTile(
+              title: Text("Notifications"),
+              value: _notifications,
+              onChanged: (value) => setState(() => _notifications = value),
+            ),
+
+            Row(
+              children: [
+                Text(
+                  _dob == null
+                      ? "No Date Selected"
+                      : "DOB: ${_dob!.day}/${_dob!.month}/${_dob!.year}",
+                ),
+                Spacer(),
+                ElevatedButton(onPressed: _pickDate, child: Text("Pick Date")),
+              ],
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(onPressed: _submit, child: Text("Add student")),
+          ],
+        ),
+      ),
+    );
   }
 }
