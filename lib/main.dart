@@ -1,6 +1,8 @@
 import 'package:app_iti/bmi_screen.dart';
 import 'package:app_iti/profile_screen.dart';
 import 'package:app_iti/some_widgets.dart';
+import 'package:app_iti/view/main_screen.dart';
+import 'package:app_iti/view/screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfileScreen(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MainScreen(),
     );
   }
 }
