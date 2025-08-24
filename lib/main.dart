@@ -1,7 +1,10 @@
 import 'package:app_iti/bmi_screen.dart';
+import 'package:app_iti/login_screen.dart';
 import 'package:app_iti/profile_screen.dart';
 import 'package:app_iti/some_widgets.dart';
+import 'package:app_iti/view/flutter_navigation.dart';
 import 'package:app_iti/view/main_screen.dart';
+import 'package:app_iti/view/notes_app.dart';
 import 'package:app_iti/view/screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +24,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: MainScreen(),
+      home: LoginScreen(),
+
+      routes: {
+        '/second_screen' : (context) => SecondScreen(),
+
+      },
     );
   }
 }
