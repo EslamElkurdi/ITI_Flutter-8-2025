@@ -1,10 +1,12 @@
 import 'package:app_iti/bmi_screen.dart';
+import 'package:app_iti/module/counter/counter_screen.dart';
+import 'package:app_iti/module/login/login_screen.dart';
 // import 'package:app_iti/login_screen.dart';
 import 'package:app_iti/profile_screen.dart';
 import 'package:app_iti/some_widgets.dart';
 import 'package:app_iti/view/api_learn.dart';
 import 'package:app_iti/view/flutter_navigation.dart';
-import 'package:app_iti/view/login_screen.dart';
+// import 'package:app_iti/view/login_screen.dart';
 import 'package:app_iti/view/main_screen.dart';
 import 'package:app_iti/view/notes_app.dart';
 import 'package:app_iti/view/screen.dart';
@@ -15,7 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); 
 
   await loadToken();
 
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
+      // home: LoginScreen(),
       home: savedToken != null ? ProductScreen() : LoginScreen(),
 
       routes: {'/second_screen': (context) => SecondScreen()},
